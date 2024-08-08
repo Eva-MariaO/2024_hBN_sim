@@ -1,0 +1,35 @@
+{
+    "kwargs0": {
+        "ensemble_axes_metadata": [
+            {
+                "_concatenate": true,
+                "_default_type": "index",
+                "_ensemble_mean": false,
+                "_squeeze": false,
+                "label": "",
+                "tex_label": null,
+                "tex_units": null,
+                "type": "OrdinalAxis",
+                "units": null,
+                "values": [
+                    "MAADF",
+                    "HAADF"
+                ]
+            }
+        ],
+        "metadata": {
+            "base_tilt_x": 0.0,
+            "base_tilt_y": 0.0,
+            "energy": 60000.0,
+            "label": "electron counts",
+            "reciprocal_space": false,
+            "semiangle_cutoff": 30,
+            "units": ""
+        },
+        "sampling": [
+            0.04968253968253968,
+            0.049769486155847996
+        ]
+    },
+    "type0": "Images"
+}
