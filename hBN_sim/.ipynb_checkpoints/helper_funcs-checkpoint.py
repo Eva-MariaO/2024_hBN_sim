@@ -1,6 +1,7 @@
-from datetime import datetime
+#from datetime import datetime
 
-def timenow_formatted():
+def timeformat():
+    '''creates timestamp of format YYYYMMDDHHMMSS'''
     #get current time
     now = datetime.now()
     now_str = [str(now.year), str(now.month), str(now.day), str(now.hour), str(now.minute), str(now.second),]
