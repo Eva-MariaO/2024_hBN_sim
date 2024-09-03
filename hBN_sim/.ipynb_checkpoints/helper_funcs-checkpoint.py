@@ -1,4 +1,4 @@
-#from datetime import datetime
+from datetime import datetime
 
 def timeformat():
     '''creates timestamp of format YYYYMMDDHHMMSS'''
