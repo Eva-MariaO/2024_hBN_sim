@@ -34,6 +34,8 @@ astig_angle = 0 #[-0.3, 0, 0.3] #+/-0.3 #rad
 coma = 0 #[0, 1000, 1500] #1000 aberration C21, ~few hundred nanometers
 aberration_coefficients = {'C10': defocus, 'C30': Cs, 'C12': astig, 'C21': coma}
 
+
+
 #----------------------------------------------------------------------------------------------------
 
 #simulation function
