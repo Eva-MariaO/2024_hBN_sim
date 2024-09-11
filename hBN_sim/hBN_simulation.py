@@ -50,7 +50,7 @@ def simulation(vacancy_atom, defect_atom_symbol, defect_type, path, variables_li
     hBN_manipulated = structure_manipulation(hBN, defect_type, defect_atom_symbol, ind_array)
     
     #abtem setup: phonons, potential, probe
-    frozen_phonons = abtem.FrozenPhonons(hBN_manipulated, num_configs=10, sigmas=0.1)
+    frozen_phonons = abtem.FrozenPhonons(hBN_manipulated, num_configs=20, sigmas=0.1)
     potential = abtem.Potential(frozen_phonons, sampling=0.05)
     probe = abtem.Probe(energy=energy_probe, semiangle_cutoff=semiangle_cutoff, 
                         aberrations=aberration_coefficients, astigmatism_angle=astig_angle)

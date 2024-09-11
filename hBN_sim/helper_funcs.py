@@ -118,4 +118,7 @@ def structure_manipulation(structure, defect_type, defect_atom_symbol, ind_array
     return(hBN_manipulated)
     
    
-    
+def nnd():
+    hBN = built_structure(4,4)
+    nnd = round(hBN.get_distance(1, 3),4)
+    return(nnd)

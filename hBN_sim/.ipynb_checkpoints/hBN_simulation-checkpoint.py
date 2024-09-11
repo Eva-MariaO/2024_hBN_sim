@@ -34,6 +34,8 @@ astig_angle = 0 #[-0.3, 0, 0.3] #+/-0.3 #rad
 coma = 0 #[0, 1000, 1500] #1000 aberration C21, ~few hundred nanometers
 aberration_coefficients = {'C10': defocus, 'C30': Cs, 'C12': astig, 'C21': coma}
 
+
+
 #----------------------------------------------------------------------------------------------------
 
 #simulation function
@@ -48,7 +50,7 @@ def simulation(vacancy_atom, defect_atom_symbol, defect_type, path, variables_li
     hBN_manipulated = structure_manipulation(hBN, defect_type, defect_atom_symbol, ind_array)
     
     #abtem setup: phonons, potential, probe
-    frozen_phonons = abtem.FrozenPhonons(hBN_manipulated, num_configs=10, sigmas=0.1)
+    frozen_phonons = abtem.FrozenPhonons(hBN_manipulated, num_configs=20, sigmas=0.1)
     potential = abtem.Potential(frozen_phonons, sampling=0.05)
     probe = abtem.Probe(energy=energy_probe, semiangle_cutoff=semiangle_cutoff, 
                         aberrations=aberration_coefficients, astigmatism_angle=astig_angle)
