@@ -87,7 +87,7 @@ if __name__ == "__main__":
         for num_configs in num_configs_list:
                     
             timestamp = timeformat()
-            path = (f'{timestamp}_hBN_size{size_x}x{size_y}_{defect_type}_vacany{vacancy_atom}_filledwith{defect_atom_symbol}_energy{int(energy_probe)}_numconfigs{num_configs}_Cs{int(Cs)}_astig{astig}_astigangle{astig_angle}_coma{coma}')#_focal{int(focal_spread)}_ang{int(angular_spread)}')
+            path = (f'{timestamp}_hBN_size{size_x}x{size_y}_{defect_type}_vacancy{vacancy_atom}_filledwith{defect_atom_symbol}_energy{int(energy_probe)}_numconfigs{num_configs}_Cs{int(Cs)}_astig{astig}_astigangle{astig_angle}_coma{coma}')#_focal{int(focal_spread)}_ang{int(angular_spread)}')
             variables_list = [timestamp, str(size_x) + 'x' + str(size_y), defect_type, vacancy_atom, defect_atom_symbol,
          int(energy_probe), num_configs, semiangle_cutoff, int(Cs), astig, astig_angle, coma]
             print(path)

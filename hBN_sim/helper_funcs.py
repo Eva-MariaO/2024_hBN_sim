@@ -122,3 +122,39 @@ def nnd():
     hBN = built_structure(4,4)
     nnd = round(hBN.get_distance(1, 3),4)
     return(nnd)
+
+
+def create_parameter_list(data_names, timestamp=True, structure=False, size=False, defect_type=True, vacancy_atom=True,
+                          defect_atom=True, energy=False, defocus=False, Cs=False, astig=False, astig_angle=False,
+                          coma=False, process_step=False):
+
+    #Achtung! order of bool_list must align with order in data_names!!
+    bool_list = [timestamp, structure, size, defect_type, vacancy_atom, defect_atom, 
+                 energy, defocus, Cs, astig, astig_angle, coma, process_step]
+    #get indices of True value
+    indices = np.where(bool_list)[0]
+    double = False
+    
+    parameter_list = [None] * len(data_names)
+
+    for i in range(len(data_names)):
+        string_list = data_names[i].split('_')
+        string_selection = [string_list[index] for index in indices]
+        
+        if string_list[3] == 'double':
+            double = True
+
+        for k in range(len(string_selection)):
+            if double==True and string_selection[k].startswith('vac'):
+                string_selection[k] = string_selection[k].rstrip('BN')
+                double = False
+                
+            if (k+1)%3 == 0 and k!=0:
+                string_selection[k] = ' '.join([string_selection[k], "\n"])
+                
+        parameter_list[i] = ' '.join(string_selection)
+        #genauere manipulation z.B. mit: string.split('_')[5]).lstrip('filledwith')])
+        
+    return(parameter_list)
+
+  

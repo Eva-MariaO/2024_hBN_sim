@@ -84,7 +84,7 @@ if __name__ == "__main__":
                 for d_type in defect_type_list:
                     
                     timestamp = timeformat()
-                    path = (f'{timestamp}_hBN_size{size_x}x{size_y}_{d_type}_vacany{atom}_filledwith{symbol}_energy{int(energy_probe)}_defocus{defocus}_Cs{int(Cs)}_astig{astig}_astigangle{astig_angle}_coma{coma}')#_focal{int(focal_spread)}_ang{int(angular_spread)}')
+                    path = (f'{timestamp}_hBN_size{size_x}x{size_y}_{d_type}_vacancy{atom}_filledwith{symbol}_energy{int(energy_probe)}_defocus{defocus}_Cs{int(Cs)}_astig{astig}_astigangle{astig_angle}_coma{coma}')#_focal{int(focal_spread)}_ang{int(angular_spread)}')
                     variables_list = [timestamp, str(size_x) + 'x' + str(size_y), d_type, atom, symbol,
                  int(energy_probe), defocus, semiangle_cutoff, int(Cs), astig, astig_angle, coma]
                     print(path)
