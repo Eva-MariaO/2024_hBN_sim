@@ -49,7 +49,7 @@ def simulation(vacancy_atom, defect_atom_symbol, defect_type, path, variables_li
     ind_array = defect_indices(hBN, vacancy_atom) #returns array of form: [ind_single, ind_double, ind_ring]
     #insert impurities
     hBN_manipulated = structure_manipulation(hBN, defect_type, defect_atom_symbol, ind_array)
-    
+        
     #abtem setup: phonons, potential, probe
     frozen_phonons = abtem.FrozenPhonons(hBN_manipulated, num_configs = 20, sigmas = 0.1)
     potential = abtem.Potential(frozen_phonons, sampling = 0.05)

@@ -65,39 +65,55 @@ def defect_indices(hBN, vacancy_atom, lattice_constant=2.504):
             pass
     
     #for RING:
-    #find distances of next neighbours, second neighbours (nnd_2) and third neighbors (nnd_3)
-    nnd = round(hBN.get_distance(1, 3),4)
+    #find distances of second neighbours (nnd_2) and third neighbors (nnd_3)
     nnd_2 = round(hBN.get_distance(1, 2),4)
     nnd_3 = round(hBN.get_distance(0,2),4)#dist for atoms opposed to each other
     
-    #create dummy array for ring indices and assign first two possitions with double indices
-    ind_ring = [0 for i in range(6)]
-    ind_ring[0], ind_ring[1] = ind_double
+    for startindex in center_indices:
+        #create dummy array for ring indices and assign first two possitions with double indices
+        ind_ring = [0 for i in range(6)]
+        ind_ring[0] = startindex
     
-    #find atom opposite to first atom
-    for index in center_indices:
-        dist_to_1 = round(hBN.get_distance(ind_ring[0], index),4)
-        dist_to_2 = round(hBN.get_distance(ind_ring[1], index),4)
+        #find atom opposite to first atom
+        for index in center_indices:
+            dist_to_1 = round(hBN.get_distance(ind_ring[0], index),4)
+            if dist_to_1 == nnd_3:
+                ind_ring[3] = index #position 4
+                break
+            else:
+                pass
     
-        if dist_to_1 == nnd_3 and dist_to_2 == nnd_2:
-            ind_ring[3] = index #position 4
+        #find next neighbour to first atom
+        for index in center_indices:
+            dist_to_1 = round(hBN.get_distance(ind_ring[0], index),4)
+            dist_to_4 = round(hBN.get_distance(ind_ring[3], index),4)
+            if dist_to_1 == nnd and dist_to_4 == nnd_2:
+                ind_ring[1] = index #position 2
+                dist_to_2 = round(hBN.get_distance(ind_ring[1], index),4)
+    
+            else:
+                pass
+        
+        
+        #find remaining atoms (position numbering 1 to 6): 
+        for index in center_indices:
+            dist_to_1 = round(hBN.get_distance(ind_ring[0], index),4)
+            dist_to_2 = round(hBN.get_distance(ind_ring[1], index),4)
+            dist_to_4 = round(hBN.get_distance(ind_ring[3], index),4)
+            if dist_to_1 == nnd_2 and dist_to_2 == nnd and dist_to_4 == nnd:
+                ind_ring[2] = index #position 3 
+            if dist_to_1 == nnd_2 and dist_to_2 == nnd_3 and dist_to_4 == nnd:
+                ind_ring[4] = index #position 5
+            if dist_to_1 == nnd and dist_to_2 == nnd_2 and dist_to_4 == nnd_2:
+                ind_ring[5] = index #position 6 
+        else:
+            pass
+    
+        #check if positions are left with zeroes:
+        if np.any([element==0 for element in ind_ring]):
+            pass
+        else:
             break
-        else:
-            pass
-    
-    #find remaining atoms (position numbering 1 to 6 counterclockwise): 
-    for index in center_indices:
-        dist_to_1 = round(hBN.get_distance(ind_ring[0], index),4)
-        dist_to_2 = round(hBN.get_distance(ind_ring[1], index),4)
-        dist_to_4 = round(hBN.get_distance(ind_ring[3], index),4)
-        if dist_to_1 == nnd_2 and dist_to_2 == nnd and dist_to_4 == nnd:
-            ind_ring[2] = index #position 3
-        if dist_to_1 == nnd_2 and dist_to_2 == nnd_3 and dist_to_4 == nnd:
-            ind_ring[4] = index #position 5
-        if dist_to_1 == nnd and dist_to_2 == nnd_2 and dist_to_4 == nnd_2:
-            ind_ring[5] = index #position 6 
-        else:
-            pass
     
     return(ind_single, ind_double, ind_ring)
 
