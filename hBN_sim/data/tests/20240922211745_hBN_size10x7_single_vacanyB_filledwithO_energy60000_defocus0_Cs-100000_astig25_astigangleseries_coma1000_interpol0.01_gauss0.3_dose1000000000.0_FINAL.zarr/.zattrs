@@ -1,0 +1,38 @@
+{
+    "kwargs0": {
+        "ensemble_axes_metadata": [
+            {
+                "_concatenate": true,
+                "_default_type": "index",
+                "_ensemble_mean": false,
+                "_squeeze": false,
+                "label": "phi12",
+                "tex_label": "$\\phi_{12}$",
+                "tex_units": null,
+                "type": "ParameterAxis",
+                "units": "\u00c5",
+                "values": [
+                    0.7,
+                    0.3,
+                    0.0,
+                    -0.3,
+                    -0.7
+                ]
+            }
+        ],
+        "metadata": {
+            "base_tilt_x": 0.0,
+            "base_tilt_y": 0.0,
+            "energy": 60000.0,
+            "label": "electron counts",
+            "reciprocal_space": false,
+            "semiangle_cutoff": 30,
+            "units": ""
+        },
+        "sampling": [
+            0.009996007984031934,
+            0.00999603508398264
+        ]
+    },
+    "type0": "Images"
+}

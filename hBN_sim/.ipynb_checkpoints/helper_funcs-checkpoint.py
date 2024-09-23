@@ -17,8 +17,6 @@ def timeformat():
     
     return(now_str)
 
-def test():
-    return('test')
 
 def built_structure(size_x, size_y, lattice_constant=2.504):
     '''creation of orthogonalized hBN structure; positional arguments: size_x, size_y, returns: atomic structure'''
@@ -30,7 +28,7 @@ def built_structure(size_x, size_y, lattice_constant=2.504):
     return(hBN)
 
 def defect_indices(hBN, vacancy_atom, lattice_constant=2.504):
-    '''finds center indices of atomic structure; positional argument: atomic structure; returns: array of indices'''
+    '''finds center indices of atomic structure; positional argument: atomic structure & vacancy atom ('N' or 'B'). returns: array of indices [index_single, indices_double, indices_ring]'''
     #find atoms located in the center
     x_center = max(hBN.positions[:, 0])/2
     y_center = max(hBN.positions[:, 1])/2
@@ -118,6 +116,10 @@ def defect_indices(hBN, vacancy_atom, lattice_constant=2.504):
     return(ind_single, ind_double, ind_ring)
 
 def structure_manipulation(structure, defect_type, defect_atom_symbol, ind_array):
+    '''inserts defect atom into pristine structure. 
+    positional arguments: structure, defect_type, defect_atom_symbol, ind_array.
+    returns: manipulated structure.
+    '''
     ind_single, ind_double, ind_ring = ind_array
     #insert impurity atoms - introducing single and double defects
     hBN_manipulated = structure.copy()
@@ -140,10 +142,14 @@ def nnd():
     return(nnd)
 
 
-def create_parameter_list(data_names, timestamp=True, structure=False, size=False, defect_type=True, vacancy_atom=True,
-                          defect_atom=True, energy=False, defocus=False, Cs=False, astig=False, astig_angle=False,
-                          coma=False, process_step=False):
-
+def create_parameter_list(data_names, timestamp=True, structure=False, size=False, defect_type=True,
+                          vacancy_atom=True, defect_atom=True, energy=False, defocus=False, Cs=False,
+                          astig=False, astig_angle=False, coma=False, process_step=False):
+    '''creation of parameter list for given data names. only works for names of following shape:
+    20240912123309_hBN_size20x13_single_vacancyB_filledwithO_energy60000_defocus0_Cs-100000_astig0_astigangle0_coma0_RAW.zarr
+    [otherwise code must be adjusted]
+    returns: list of parameter info'''
+    
     #Achtung! order of bool_list must align with order in data_names!!
     bool_list = [timestamp, structure, size, defect_type, vacancy_atom, defect_atom, 
                  energy, defocus, Cs, astig, astig_angle, coma, process_step]
