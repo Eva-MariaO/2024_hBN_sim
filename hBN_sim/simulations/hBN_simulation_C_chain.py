@@ -46,7 +46,7 @@ coma = 0 #f.e. [0, 1000, 1500] aberration C21, ~few hundred nanometers, input in
 aberration_coefficients = {'C10': defocus, 'C30': Cs, 'C12': astig, 'C21': coma}
 
 #CHOOSE lengths of C-chains (up to 6 -> full ring)
-len_C_chain_list = np.array([3,6])#1 to 6
+len_C_chain_list = np.array([1,2,4,5])#1 to 6
 
 
 #----------------------------------------------------------------------------------------------------
